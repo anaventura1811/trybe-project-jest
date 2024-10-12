@@ -1,4 +1,4 @@
-const assert = require('assert');
+// const assert = require('assert');
 const answerPhone = require('../src/asyncJest');
 /*
 A função answerPhone recebe um parâmetro boleano.
@@ -11,12 +11,15 @@ ATENÇÃO!!! Edite apenas este arquivo. Não altere os arquivos da pasta 'src'.
 */
 
 describe('o retorno do telefonema', () => {
-  test('atende', () => {
-    assert.fail();
-    // Insira seu teste assíncrono aqui
+  test('atende', async () => {
+    await answerPhone(true).then((data) => expect(data).toBe('Oi!'));
   });
-  test('ocupado', () => {
-    assert.fail();
-    // Insira seu teste assíncrono aqui
+
+  test('ocupado', async () => {
+    await expect(answerPhone(false))
+      .rejects.toThrowError(new Error('Infelizmente não podemos atender...'));
   });
 });
+
+// Link para documentação do Jest sobre testes assíncronos: https://jestjs.io/pt-BR/docs/asynchronous
+// Link para documentação do toThrowError/ toThrow: https://jestjs.io/pt-BR/docs/expect#tothrowerror

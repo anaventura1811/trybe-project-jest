@@ -20,7 +20,9 @@ ATENÇÃO!!! Edite apenas este arquivo. Não altere os arquivos da pasta 'src'.
 */
 
 describe('quem sobreviveu?', () => {
-  // Adicione seu código aqui
+  afterEach(() => console.log(adventure.specialists));
+  afterAll(() => console.log(`O aventureiro sobrevivente é ${adventure.specialists[0]}`));
+  beforeEach(() => adventure.randomAttack());
 
   test('depois da primeira aventura', () => {
     expect(adventure.specialists.length).toBe(5);
@@ -38,3 +40,5 @@ describe('quem sobreviveu?', () => {
     expect(adventure.specialists.length).toBe(1);
   });
 });
+
+// Link p/ documentação consultada: https://jestjs.io/pt-BR/docs/setup-teardown

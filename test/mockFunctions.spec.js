@@ -15,7 +15,19 @@ ATENÇÃO!!! Edite apenas este arquivo. Não altere os arquivos da pasta 'src'.
 */
 
 describe('verifica as funções e os mocks', () => {
-  // Crie suas mock functions aqui
+  mockFunctions.add = jest.fn().mockImplementation((a, b) => a + b);
+  mockFunctions.subtract = jest.fn().mockImplementation((a, b) => a - b);
+  mockFunctions.multiply = jest.fn().mockImplementation((a, b) => a * b);
+  mockFunctions.divide = jest.fn().mockImplementation((a, b) => a / b);
+  mockFunctions.power = jest.fn().mockImplementation((a, b) => a ** b);
+  mockFunctions.factorial = jest.fn().mockImplementation((num) => {
+    const fatorial = num;
+    let result = fatorial;
+    for (let index = 1; index < fatorial; index += 1) {
+      result *= index;
+    }
+    return result;
+  });
 
   test('testa função add', () => {
     expect(mockFunctions.add(1, 2)).toEqual(3);
@@ -60,3 +72,8 @@ describe('verifica as funções e os mocks', () => {
     expect(mockFunctions.factorial(2)).toEqual(2);
   });
 });
+
+// Link para documentação sobre operadores de atribuição:
+// https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/First_steps/Math
+// Link para função fatorial:
+// https://serprogramador.com.br/artigos/topico/javascript/Como-calcular-a-operacao-matematica-de-fatorial-com-JavaScript
